@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXinWeb", "JiangXinWeb\JiangXinWeb.csproj", "{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXin.Web.WeXin.CommonService", "JiangXin.Web.WeXin.CommonService\JiangXin.Web.WeXin.CommonService.csproj", "{5ABF9727-CCEA-4737-BA47-B09BC946486A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXinWeb.Test", "JiangXinWeb.Test\JiangXinWeb.Test.csproj", "{1B235661-F336-4C3E-A13A-7D927A8505D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXin.Web", "JiangXin.Web\JiangXin.Web.csproj", "{E4478B8C-9ABA-4E2A-95B4-1426D1F32DB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXin.Web.Test", "JiangXin.Web.Test\JiangXin.Web.Test.csproj", "{681C3BF1-62E6-4991-BEAB-956B71B85929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXin.Common", "JiangXin.Common\JiangXin.Common.csproj", "{F45FEC26-661A-48CA-89C7-2AC9601C0664}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ABF9727-CCEA-4737-BA47-B09BC946486A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABF9727-CCEA-4737-BA47-B09BC946486A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABF9727-CCEA-4737-BA47-B09BC946486A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABF9727-CCEA-4737-BA47-B09BC946486A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4478B8C-9ABA-4E2A-95B4-1426D1F32DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4478B8C-9ABA-4E2A-95B4-1426D1F32DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4478B8C-9ABA-4E2A-95B4-1426D1F32DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4478B8C-9ABA-4E2A-95B4-1426D1F32DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681C3BF1-62E6-4991-BEAB-956B71B85929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681C3BF1-62E6-4991-BEAB-956B71B85929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681C3BF1-62E6-4991-BEAB-956B71B85929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681C3BF1-62E6-4991-BEAB-956B71B85929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F45FEC26-661A-48CA-89C7-2AC9601C0664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F45FEC26-661A-48CA-89C7-2AC9601C0664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F45FEC26-661A-48CA-89C7-2AC9601C0664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F45FEC26-661A-48CA-89C7-2AC9601C0664}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
