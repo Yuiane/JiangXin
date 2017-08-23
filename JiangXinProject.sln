@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXinWeb", "JiangXinWeb\JiangXinWeb.csproj", "{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangXinWeb.Test", "JiangXinWeb.Test\JiangXinWeb.Test.csproj", "{1B235661-F336-4C3E-A13A-7D927A8505D5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF92D7F1-A6D9-41D9-B025-557B4EA189FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B235661-F336-4C3E-A13A-7D927A8505D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
