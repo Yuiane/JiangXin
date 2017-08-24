@@ -10,6 +10,8 @@ using Senparc.Weixin.HttpUtility;
 using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MessageHandlers;
+using Senparc.Weixin.MP.Containers;
+using Senparc.Weixin.MP.AdvancedAPIs;
 
 namespace JiangXin.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
 {
@@ -27,10 +29,24 @@ namespace JiangXin.Web.WeXin.CommonService.MessageHandlers.CustomMessageHandler
         public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
         {
             var responseMessage = CreateResponseMessage<ResponseMessageNews>();
+            string name = string.Empty;
+            try
+            {
+                var accessToken = AccessTokenContainer.TryGetAccessToken("wxd4d7bd7f8fdc8156", "0482ace1cf1b9dcf702ba4366be65db8");
+
+
+                var _userInfo = UserApi.Info(accessToken, requestMessage.FromUserName);
+                name = _userInfo.nickname;
+            }
+            catch (Exception err)
+            {
+                name = err.Message;
+            }
+
             responseMessage.Articles.Add(new Article()
             {
-                Title = requestMessage.FromUserName + ",算算连云港装修多少钱",
-                Description = requestMessage.FromUserName + ",算算连云港装修多少钱",
+                Title = name + ",算算连云港装修多少钱",
+                Description = name + ",算算连云港装修多少钱",
                 PicUrl = "http://jx.51czb.com/Images/bg.png",
                 Url = "http://m.to8to.com/yezhu/zxbj.php?to8to_from=wechat_price&utm_pos=wbcdl"
             });
