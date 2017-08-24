@@ -1,0 +1,280 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using Senparc.Weixin.MP.Entities;
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/css.css" rel="stylesheet" />
+<style type="text/css">
+    .input {
+        width: 200px;
+    }
+
+    input {
+        height: 30px !important;
+    }
+
+    .cells {
+        line-height: 48px;
+    }
+
+    .font-small {
+        font-size: 14px;
+    }
+</style>
+<div class="content">
+    <div class="navTitle">自定义菜单管理 | 自定义菜单设置</div>
+    <form action="javascript:void(0);" id="autoReplyForm" name="autoReplyForm">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+            <tr>
+                <td align="center"></td>
+                <td align="center">第一列</td>
+                <td align="center">第二列</td>
+                <td align="center">第三列</td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.1</td>
+                <td align="center"><input class="input input1 sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input1 sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input1 sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.2</td>
+                <td align="center"><input class="input input2 sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input2 sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input2 sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.3</td>
+                <td align="center"><input class="input input3 sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input3 sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input3 sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.4</td>
+                <td align="center"><input class="input input4 sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input4 sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input4 sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr>
+                <td align="center">二级菜单No.5</td>
+                <td align="center"><input class="input input5 sub-first-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input5 sub-second-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+                <td align="center"><input class="input input5 sub-third-menu" type="text" value="" attr-type="" attr-url="" attr-key="" /></td>
+            </tr>
+            <tr class="first-menu">
+                <td align="center">一级菜单按钮</td>
+                <td align="center">
+                    <input class="input first first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+                <td align="center">
+                    <input class="input second first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+                <td align="center">
+                    <input class="input third first-menu-input" type="text" value="" attr-type="" attr-url="" attr-key="" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <div class="cells">
+                        &nbsp;&nbsp;Type：&nbsp;
+                        <select id="selectType" onchange="ChangeSelect()">
+                            <option value="click" selected="selected">点击事件(传回服务器)</option>
+                            <option value="view">访问网页(直接跳转)</option>
+                            <option value="miniprogram">小程序(直接跳转)</option>
+                            <option value="location_select">弹出地理位置选择器</option>
+                            <option value="pic_photo_or_album">弹出拍照或者相册发图</option>
+                            <option value="pic_sysphoto">弹出系统拍照发图</option>
+                            <option value="pic_weixin">弹出微信相册发图器</option>
+                            <option value="scancode_push">扫码推事件</option>
+                            <option value="scancode_waitmsg">扫码推事件且弹出“消息接收中”提示框</option>
+                        </select>
+                        <div id="KeyConfig">
+                            &nbsp;&nbsp;&nbsp;&nbsp;Key：&nbsp;&nbsp;<input style="width:420px!important;" id="key_value" type="text" value="" />
+                        </div>
+                        <div id="UrlConfig" style="display:none;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;Url：&nbsp;&nbsp;<input style="width:90%!important;" id="url_value" type="text" value="" />
+                        </div>
+                    </div>
+                </td>
+                <td align="center">
+                    <input type="button" onclick="SubmitMenu()" class="btn-submit" value="更新菜单" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        InitLoad();
+        var opt = { id: '' };
+        $(".input").on("click", function () {
+            if (opt.id != '') {
+                //赋值失去焦点
+                $(opt.id).attr("attr-key", $("#key_value").val());
+                $(opt.id).attr("attr-url", $("#url_value").val());
+                $(opt.id).attr("attr-type", $("#selectType").find("option:selected").val());
+            }
+            opt.id = $(this);
+            var type = $(this).attr("attr-type");
+            var obj = document.getElementById("selectType");
+            for (i = 0; i < obj.length; i++) {
+                if (obj[i].value == type)
+                    obj[i].selected = true;
+            }
+            if (type == "view") {
+                $("#UrlConfig").show();
+                $("#KeyConfig").hide();
+            } else {
+                $("#KeyConfig").show();
+                $("#UrlConfig").hide();
+            }
+            $("#url_value").val($(this).attr("attr-url"));
+            $("#key_value").val($(this).attr("attr-key"));
+        })
+    });
+    //初始化-加载菜单
+    function InitLoad() {
+        $.ajax({
+            type: "post",
+            async: true,
+            url: "/Menu/GetMenu",
+            dataType: "JSON",
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("网络错误，请刷新后再操作！");
+            },
+            success: function (result) {
+                var result = eval(result);
+                if (result.errcode == 0 && result.menu != null && result.menu.button != null) {
+                    for (var i = 0; i < result.menu.button.length; i++) {
+                        if (result.menu.button[i].sub_button != null) {
+                            //自定义菜单多个
+                            InitLoadMenuSub_Button(result.menu.button[i], i);
+                        }
+                        else {
+                            //自定义菜单单个
+                            InitLoadMenuButton(result.menu.button[i], i);
+                        }
+                    }
+                }
+            }
+        });
+    }
+    //多个菜单
+    function InitLoadMenuSub_Button(sender, index) {
+        var senderValue = "sub-first-menu";
+        if (index == 0) {
+            senderValue = "sub-first-menu";
+        } else if (index == 1) {
+            senderValue = "sub-second-menu";
+        } else {
+            senderValue = "sub-third-menu";
+        }
+        $(".first-menu-input").eq(index).val(sender.name);
+        for (var i = 0; i < sender.sub_button.length; i++) {
+            $("." + senderValue).eq(i).val(sender.sub_button[i].name);
+            $("." + senderValue).eq(i).attr("attr-type", sender.sub_button[i].type);
+            $("." + senderValue).eq(i).attr("attr-url", sender.sub_button[i].url);
+            $("." + senderValue).eq(i).attr("attr-key", sender.sub_button[i].key);
+        }
+    }
+    //单个菜单
+    function InitLoadMenuButton(sender, index) {
+        $(".first-menu-input").eq(index).val(sender.name);
+        $(".first-menu-input").eq(index).attr("attr-type", sender.type);
+        $(".first-menu-input").eq(index).attr("attr-url", sender.url);
+        $(".first-menu-input").eq(index).attr("attr-key", sender.key);
+    }
+    //change
+    function ChangeSelect() {
+        if ($("#selectType").find("option:selected").val() == "view") {
+            $("#UrlConfig").show();
+            $("#KeyConfig").hide();
+        } else {
+            $("#KeyConfig").show();
+            $("#UrlConfig").hide();
+        }
+    }
+    //提交菜单
+    function SubmitMenu() {
+        var menu = [];
+        var list = [], obj = [];
+        if ($(".first-menu-input.first").val() != "") {
+            obj = {
+                name: $(".first-menu-input.first").val(),
+                key: $(".first-menu-input.first").attr("attr-key"),
+                url: $(".first-menu-input.first").attr("attr-url"),
+                type: $(".first-menu-input.first").attr("attr-type")
+            };
+            $(".sub-first-menu").each(function () {
+                if ($(this).val() != "") {
+                    list.push(
+                        {
+                            name: $(this).val(),
+                            key: $(this).attr("attr-key"),
+                            url: $(this).attr("attr-url"),
+                            type: $(this).attr("attr-type")
+                        });
+                }
+            });
+            menu.push({ menu: obj, menuList: list });
+        }
+        list = [], obj = [];
+        if ($(".first-menu-input.second").val() != "") {
+            obj = {
+                name: $(".first-menu-input.second").val(),
+                key: $(".first-menu-input.second").attr("attr-key"),
+                url: $(".first-menu-input.second").attr("attr-url"),
+                type: $(".first-menu-input.second").attr("attr-type")
+            };
+            $(".sub-second-menu").each(function () {
+                if ($(this).val() != "") {
+                    list.push(
+                        {
+                            name: $(this).val(),
+                            key: $(this).attr("attr-key"),
+                            url: $(this).attr("attr-url"),
+                            type: $(this).attr("attr-type")
+                        });
+                }
+            });
+            menu.push({ menu: obj, menuList: list });
+        }
+        list = [], obj = [];
+        if ($(".first-menu-input.third").val() != "") {
+            obj = {
+                name: $(".first-menu-input.third").val(),
+                key: $(".first-menu-input.third").attr("attr-key"),
+                url: $(".first-menu-input.third").attr("attr-url"),
+                type: $(".first-menu-input.third").attr("attr-type")
+            };
+            $(".sub-third-menu").each(function () {
+                if ($(this).val() != "") {
+                    list.push({
+                        name: $(this).val(),
+                        key: $(this).attr("attr-key"),
+                        url: $(this).attr("attr-url"),
+                        type: $(this).attr("attr-type")
+                    });
+                }
+            });
+            menu.push({ menu: obj, menuList: list });
+        }
+        var menuStr = JSON.stringify({ list: menu });
+        $.ajax({
+            type: "post",
+            async: true,
+            url: "/Menu/UpdateMenu",
+            dataType: "Text",
+            data: { "id": menuStr },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("网络错误，请刷新后再操作！");
+            },
+            success: function (result) {
+                alert(result);
+                //alert(result);
+            }
+        });
+    }
+</script>
